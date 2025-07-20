@@ -1,0 +1,23 @@
+/* src/components/GoalList.css */
+.goal-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Slightly wider min for cards */
+  gap: 30px; /* More space between grid items */
+  padding: 0;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .goal-list {
+    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-list {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 20px;
+  }
+}

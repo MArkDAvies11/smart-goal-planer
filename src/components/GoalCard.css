@@ -1,0 +1,313 @@
+/* src/components/GoalCard.css */
+.goal-card {
+  background-color: var(--card-bg-color);
+  border-radius: 15px; /* More rounded corners */
+  box-shadow: var(--box-shadow-light);
+  padding: 30px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effects */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--border-color); /* Add a subtle border */
+}
+
+.goal-card:hover {
+  transform: translateY(-5px); /* Stronger lift on hover */
+  box-shadow: var(--box-shadow-medium); /* More distinct shadow on hover */
+}
+
+.goal-card h3 {
+  color: var(--primary-color); /* Primary color for goal name */
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.8em; /* Larger, bolder title */
+  font-weight: 700;
+  text-align: center;
+}
+
+.goal-card p {
+  font-size: 1em;
+  color: var(--text-color);
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.goal-card p strong {
+  color: var(--light-text-color); /* Lighter grey for labels */
+  font-weight: 500;
+}
+
+.progress-bar-container {
+  width: 100%;
+  background-color: var(--border-color); /* Lighter background for empty bar */
+  border-radius: 12px;
+  height: 20px; /* Thicker progress bar */
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%; /* Initial width */
+  background-color: var(--accent-color); /* Accent color for progress */
+  border-radius: 12px;
+  transition: width 0.6s ease-out, background-color 0.4s ease-in-out;
+}
+
+.progress-bar-fill.completed {
+  background-color: var(--status-completed); /* Green for completed state */
+}
+
+.progress-percentage {
+  text-align: right;
+  font-size: 1em; /* Larger percentage text */
+  color: var(--text-color);
+  font-weight: 600;
+  margin-top: -15px; /* Pull up closer to bar */
+  margin-bottom: 20px;
+}
+
+.status {
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-weight: bold;
+  margin-left: 12px;
+  white-space: nowrap; /* Prevent text wrap */
+}
+
+.status.completed {
+  background-color: #e6ffe6; /* Light green background */
+  color: var(--status-completed);
+}
+
+.status.overdue {
+  background-color: #ffe6e6; /* Light red background */
+  color: var(--status-overdue);
+}
+
+.status.warning {
+  background-color: #fffbe6; /* Light yellow background */
+  color: var(--status-warning);
+}
+
+.status.on-track {
+  background-color: #e6f7ff; /* Light blue background */
+  color: var(--status-on-track);
+}
+
+.card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* More space between buttons */
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border-color); /* Dashed separator */
+}
+
+.deposit-section {
+  display: flex;
+  flex-basis: 100%; /* Take full width */
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.deposit-input {
+  flex-grow: 1;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1.05em;
+  color: var(--text-color);
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.deposit-input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(32, 178, 170, 0.2); /* Accent color shadow on focus */
+}
+
+.deposit-btn,
+.edit-btn,
+.delete-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: var(--box-shadow-light); /* Subtle shadow */
+}
+
+.deposit-btn {
+  background-color: var(--accent-color); /* Light Sea Green for deposit */
+  color: white;
+}
+
+.deposit-btn:hover:not(:disabled) {
+  background-color: #1a9c94; /* Darker accent on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.edit-btn {
+  background-color: var(--secondary-button-color); /* Steel Blue for edit */
+  color: white;
+}
+
+.edit-btn:hover:not(:disabled) {
+  background-color: #3b719f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.delete-btn {
+  background-color: var(--status-overdue); /* Red for delete */
+  color: white;
+}
+
+.delete-btn:hover:not(:disabled) {
+  background-color: #c02f3c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Disabled state for all buttons */
+.card-actions button:disabled, .edit-actions button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none; /* No lift when disabled */
+  box-shadow: none;
+}
+
+/* Edit Form inside GoalCard */
+.edit-form .form-group {
+  margin-bottom: 15px;
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: var(--text-color);
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="number"],
+.edit-form input[type="date"] {
+  width: calc(100% - 24px);
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1.05em;
+  color: var(--text-color);
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edit-form input[type="text"]:focus,
+.edit-form input[type="number"]:focus,
+.edit-form input[type="date"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.2);
+}
+
+.edit-actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px dashed var(--border-color);
+  padding-top: 20px;
+}
+
+.edit-actions .save-btn,
+.edit-actions .cancel-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow-light);
+}
+
+.edit-actions .save-btn {
+  background-color: var(--primary-color); /* Primary color for save */
+  color: white;
+}
+
+.edit-actions .save-btn:hover:not(:disabled) {
+  background-color: #5b0a9b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.edit-actions .cancel-btn {
+  background-color: #6c757d; /* Darker grey for cancel */
+  color: white;
+}
+
+.edit-actions .cancel-btn:hover:not(:disabled) {
+  background-color: #5a6268;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .goal-card {
+    padding: 25px;
+  }
+  .goal-card h3 {
+    font-size: 1.6em;
+  }
+  .goal-card p {
+    font-size: 0.95em;
+  }
+  .deposit-input, .edit-form input {
+    padding: 10px;
+    font-size: 1em;
+  }
+  .deposit-btn, .edit-btn, .delete-btn, .edit-actions button {
+    padding: 10px 15px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .goal-card {
+    padding: 20px;
+  }
+  .card-actions {
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: stretch;
+  }
+  .deposit-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .deposit-input, .deposit-btn {
+    width: 100%;
+  }
+  .card-actions button, .edit-actions button {
+    width: 100%;
+  }
+  .goal-card p {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .goal-card p strong {
+    margin-bottom: 5px;
+  }
+}

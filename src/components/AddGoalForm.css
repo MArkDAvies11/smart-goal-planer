@@ -1,0 +1,87 @@
+/* src/components/AddGoalForm.css */
+.add-goal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* More space between form groups */
+  max-width: 550px; /* Slightly wider form for content */
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: var(--card-bg-color);
+  box-shadow: var(--box-shadow-light);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 10px; /* More space below label */
+  font-weight: 600; /* Bolder label */
+  color: var(--text-color);
+  font-size: 1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"] {
+  width: calc(100% - 24px); /* Account for padding and border */
+  padding: 12px; /* Increased padding */
+  border: 1px solid var(--border-color); /* Soft border */
+  border-radius: 8px; /* More rounded inputs */
+  font-size: 1.05em; /* Slightly larger font */
+  color: var(--text-color);
+  background-color: #fff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group input[type="date"]:focus {
+  border-color: var(--primary-color); /* Primary color border on focus */
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.2); /* Soft primary color shadow on focus */
+}
+
+.add-goal-btn {
+  background-color: var(--primary-color); /* Vibrant primary button color */
+  color: white;
+  padding: 15px 25px; /* Increased padding */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2em; /* Larger, bolder font */
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  margin-top: 20px;
+  box-shadow: var(--box-shadow-light); /* Subtle shadow */
+}
+
+.add-goal-btn:hover:not(:disabled) {
+  background-color: #5b0a9b; /* Slightly darker purple on hover */
+  transform: translateY(-2px); /* More pronounced lift effect */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Stronger shadow on hover */
+}
+
+.add-goal-btn:disabled {
+  background-color: #cccccc; /* Grey when disabled */
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none; /* No lift when disabled */
+  box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .add-goal-form {
+    padding: 20px;
+  }
+  .form-group label {
+    font-size: 0.95em;
+  }
+  .form-group input {
+    padding: 10px;
+    font-size: 1em;
+  }
+  .add-goal-btn {
+    padding: 12px 20px;
+    font-size: 1.1em;
+  }
+}

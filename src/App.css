@@ -1,0 +1,193 @@
+/* src/App.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* New Vibrant Palette */
+  --primary-color: #6A0DAD; /* Deep Purple */
+  --accent-color: #20B2AA; /* Light Sea Green - for progress, some buttons */
+  --secondary-button-color: #4682B4; /* Steel Blue for other actions */
+  
+  --background-color: #EBEFF3; /* Very light cool grey */
+  --card-bg-color: #FFFFFF; /* Pure white for elements that pop */
+  --text-color: #333333; /* Darker grey for body text */
+  --light-text-color: #666666; /* Lighter grey for secondary text */
+  
+  --border-color: #DDE1E6; /* Soft border for elements */
+  --header-bg-color: #FFFFFF; /* White header background */
+  
+  --box-shadow-light: 0 4px 12px rgba(0,0,0,0.08); /* Subtle shadow */
+  --box-shadow-medium: 0 8px 20px rgba(0,0,0,0.15); /* More pronounced shadow */
+
+  /* Status Colors (for text and backgrounds) */
+  --status-completed: #28A745; /* Green */
+  --status-overdue: #DC3545; /* Red */
+  --status-warning: #FFC107; /* Amber */
+  --status-on-track: #4682B4; /* Steel Blue */
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Modern, clean font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden; /* Prevent horizontal scroll on small screens */
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App {
+  max-width: 1200px; /* Max width for content */
+  margin: 0 auto; /* Center the app */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* More space between main sections */
+}
+
+header {
+  background-color: var(--header-bg-color);
+  padding: 25px 0; /* Increased padding */
+  border-bottom: none; /* Removed previous border */
+  box-shadow: var(--box-shadow-light); /* More pronounced shadow */
+  text-align: center;
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 100;
+  border-radius: 0 0 15px 15px; /* Rounded bottom corners */
+}
+
+header h1 {
+  color: var(--primary-color);
+  margin: 0;
+  font-size: 2.8em; /* Larger, bolder title */
+  font-weight: 700;
+  letter-spacing: -0.02em; /* Tighter letter spacing for modern look */
+}
+
+main {
+  flex-grow: 1; /* Allows main content to take up available space */
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* Consistent spacing with App */
+  padding-bottom: 40px; /* Padding at the bottom of the page */
+}
+
+section {
+  background-color: var(--card-bg-color);
+  padding: 35px; /* Increased padding within sections */
+  border-radius: 15px; /* More rounded corners for sections/cards */
+  box-shadow: var(--box-shadow-medium); /* More distinct shadow */
+}
+
+section h2 {
+  color: var(--primary-color); /* Section titles with primary color */
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-size: 2em; /* Larger, bolder subtitles */
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+  padding-bottom: 20px; /* Space for the underline effect */
+}
+
+section h2::after { /* Stylish underline effect */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 80px; /* Shorter, centered underline */
+  height: 4px;
+  background-color: var(--accent-color); /* Accent color underline */
+  border-radius: 2px;
+}
+
+/* Loading and Error Indicators (with animation) */
+.app-loading-indicator, .app-error-message {
+  position: fixed;
+  top: 25px; /* Slightly lower */
+  right: 25px;
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  font-weight: 600;
+  z-index: 1000;
+  box-shadow: var(--box-shadow-medium);
+  animation: fadeInOut 4s forwards; /* Fade out animation */
+}
+
+.app-loading-indicator {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.app-error-message {
+  background-color: var(--status-overdue); /* Red for errors */
+  color: white;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); } /* Fade out and move up */
+}
+
+.loading, .error-message {
+  text-align: center;
+  font-size: 1.8em;
+  color: var(--text-color);
+  padding: 80px;
+  font-weight: 500;
+}
+
+.error-message {
+  color: var(--status-overdue);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .App {
+    padding: 15px;
+    gap: 30px;
+  }
+  header h1 {
+    font-size: 2.2em;
+  }
+  section {
+    padding: 25px;
+  }
+  section h2 {
+    font-size: 1.8em;
+    margin-bottom: 25px;
+  }
+  .app-loading-indicator, .app-error-message {
+    top: 15px;
+    right: 15px;
+    padding: 12px 20px;
+    font-size: 0.95em;
+  }
+}
+
+@media (max-width: 480px) {
+  .App {
+    padding: 10px;
+  }
+  header h1 {
+    font-size: 1.8em;
+  }
+  section {
+    padding: 20px;
+  }
+  section h2 {
+    font-size: 1.5em;
+  }
+}
