@@ -4,7 +4,7 @@ import GoalList from './components/GoalList';
 import AddGoalForm from './components/AddGoalForm';
 import './App.css'; 
 
-const API_BASE_URL = 'http://localhost:3000'; 
+const API_BASE_URL = 'https://json-server-vercel-snowy-six.vercel.app'; 
 
 function App() {
   const [goals, setGoals] = useState([]);
